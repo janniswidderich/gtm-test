@@ -5,19 +5,13 @@
    <meta charset="utf-8" />
    <meta http-equiv="x-ua-compatible" content="ie=edge" />
    <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 
    <script>
-      // Define dataLayer and the gtag function.
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-
-      // Default ad_storage to 'denied'.
-      gtag('consent', 'default', {
-         'ad_storage': 'denied',
-         'analytics_storage': 'denied',
-         'personalization_storage': 'denied',
-         'wait_for_update': 500,
-      });
+      const callbacks = []
+      function addConsentListenerExample(callback) {
+         callbacks.push(callback);
+      }
    </script>
 
    <!-- Google Tag Manager -->
@@ -32,6 +26,7 @@
                   'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
          })(window, document, 'script', 'dataLayer', 'GTM-KZT3F9Q');
       }
+      loadGTM();
    </script>
    <!-- End Google Tag Manager -->
    <title>GTM Test</title>
@@ -40,13 +35,12 @@
 <body>
    <script>
       setTimeout(() => {
-         gtag('consent', 'update', {
-            'ad_storage': 'granted',
-            'analytics_storage': 'granted',
-            'personalization_storage': 'granted',
-         });
+         const consentStatus = {
+            adConsentGranted: true,
+            analyticsConsentGranted: true
+         };
+         callbacks.forEach(callback => callback(consentStatus));
       }, 100);
-      loadGTM();
    </script>
 </body>
 
