@@ -40,13 +40,13 @@
 <body>
    <script>
       setTimeout(() => {
-         loadGTM();
          gtag('consent', 'update', {
             'ad_storage': 'granted',
             'analytics_storage': 'granted',
             'personalization_storage': 'granted',
          });
       }, 100);
+      loadGTM();
    </script>
 </body>
 
