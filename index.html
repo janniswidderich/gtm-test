@@ -39,6 +39,7 @@
             adConsentGranted: true,
             analyticsConsentGranted: true
          };
+         console.log("callbacks", callbacks);
          callbacks.forEach(callback => {
             console.log("consentStatus", consentStatus);
             callback(consentStatus);
