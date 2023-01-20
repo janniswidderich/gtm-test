@@ -11,6 +11,17 @@
       const callbacks = []
       function addConsentListenerExample(callback) {
          callbacks.push(callback);
+         setTimeout(() => {
+            const consentStatus = {
+               adConsentGranted: true,
+               analyticsConsentGranted: true
+            };
+            console.log("callbacks", callbacks);
+            callbacks.forEach(callback => {
+               console.log("consentStatus", consentStatus);
+               callback(consentStatus);
+            });
+         }, 100);
       }
    </script>
 
@@ -34,17 +45,6 @@
 
 <body>
    <script>
-      setTimeout(() => {
-         const consentStatus = {
-            adConsentGranted: true,
-            analyticsConsentGranted: true
-         };
-         console.log("callbacks", callbacks);
-         callbacks.forEach(callback => {
-            console.log("consentStatus", consentStatus);
-            callback(consentStatus);
-         });
-      }, 100);
    </script>
 </body>
 
